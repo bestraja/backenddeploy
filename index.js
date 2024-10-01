@@ -11,16 +11,9 @@ const cors = require("cors");
 var cookieParser = require('cookie-parser')
 
 
-const corsOptions = {
-   origin: 'https://frond-end-delta.vercel.app', 
-   methods: ['GET', 'POST', 'PUT', 'DELETE'], 
-   allowedHeaders: ['Content-Type', 'Authorization'], 
-   credentials: true, 
- };
- 
-app.use(cors(corsOptions));
-app.options('*', cors(corsOptions));
- 
+app.use(cors({
+   origin: 'https://frond-end-delta.vercel.app'
+}));
 
 connectdb()
 app.use(cookieParser())
