@@ -11,21 +11,17 @@ const cors = require("cors");
 var cookieParser = require('cookie-parser')
 
 
-const allowedOrigins = ['https://frond-end-delta.vercel.app/'];
-
 const corsOptions = {
-  origin: function (origin, callback) {
-    if (allowedOrigins.includes(origin) || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true,  // Si vous travaillez avec des cookies ou des sessions
-};
+   origin: 'https://frond-end-delta.vercel.app', 
+   methods: ['GET', 'POST', 'PUT', 'DELETE'], 
+   allowedHeaders: ['Content-Type', 'Authorization'], 
+   credentials: true, 
+ };
  
 app.use(cors(corsOptions));
-app.options('', cors(corsOptions));
+app.options('*', cors(corsOptions));
+ 
+
 connectdb()
 app.use(cookieParser())
 app.use(express.json())
